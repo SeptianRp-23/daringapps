@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">DaringApps</string>
+    <string name="prefLoginState">loginstate</string>
+
+    <string-array name="mapel">
+        <item>Pilih</item>
+        <item>B.Indonesia</item>
+        <item>Matematika</item>
+        <item>IPA</item>
+        <item>IPS</item>
+        <item>PKN</item>
+        <item>B.Inggris</item>
+        <item>Penjaskes</item>
+    </string-array>
+
+    <string-array name="kelas">
+        <item>Pilih</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="kelasAll">
+        <item>Pilih</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>3A</item>
+        <item>3B</item>
+        <item>4A</item>
+        <item>4B</item>
+        <item>5A</item>
+        <item>5B</item>
+        <item>6A</item>
+        <item>6B</item>
+    </string-array>
+</resources>

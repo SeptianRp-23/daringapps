@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.Guru.Absensi.GuruDetailAbsensi">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/teal_200"
+        android:id="@+id/top">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btBackdtl"
+            android:src="@drawable/ic_back"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btReload"
+            android:src="@drawable/ic_refresh"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal"
+                android:id="@+id/txtTgl"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="40dp"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"/>
+
+    </RelativeLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/list_absen"
+            android:layout_below="@+id/top"
+            android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

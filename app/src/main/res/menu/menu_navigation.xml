@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboard"
+        android:title="Utama"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/tugas"
+        android:title="Tugas"
+        android:icon="@drawable/ic_tugas"/>
+    <item
+        android:id="@+id/riwayat"
+        android:title="Riwayat"
+        android:icon="@drawable/ic_history"/>
+
+</menu>

@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.Murid.Tugas.TugasDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/purple_200"
+        android:id="@+id/toolbar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tugas Harian"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/anonymous_pro_bold_italic"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
+
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/card_data"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ID      :"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/id_siswa"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="1"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama    :"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/tvNama"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kelas   :"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/tvKelas"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal :"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/tvTgl"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pelajaran:"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="1.3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="code"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/tvID"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="1.5"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="mapel"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/tvMapel"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/card_data"
+        android:layout_marginBottom="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="1."
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textSize="16sp"
+                            android:gravity="start|top"
+                            android:enabled="false"
+                            android:textColor="@android:color/black"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine" />
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab1"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:textSize="16sp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="2."
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textSize="16sp"
+                            android:enabled="false"
+                            android:gravity="start|top"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:textColor="@android:color/black"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:textSize="16sp"
+                            android:id="@+id/mtJawab2"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="3."
+                        android:layout_marginTop="10dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:enabled="false"
+                            android:gravity="start|top"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab3"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="16sp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="4."
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@android:color/black"
+                            android:enabled="false"
+                            android:textSize="16sp"
+                            android:gravity="start|top"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab4"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="5."
+                        android:layout_marginTop="10dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"
+                            android:enabled="false"
+                            android:gravity="start|top"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab5"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="6."
+                        android:layout_marginTop="10dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:enabled="false"
+                            android:gravity="start|top"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab6"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="7."
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@android:color/black"
+                            android:enabled="false"
+                            android:textSize="16sp"
+                            android:gravity="start|top"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab7"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="8."
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="start|top"
+                            android:enabled="false"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab8"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="9."
+                        android:layout_marginTop="10dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:enabled="false"
+                            android:gravity="start|top"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab9"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="10."
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/anonymous_pro_bold_italic"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etSoal10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textSize="16sp"
+                            android:enabled="false"
+                            android:gravity="start|top"
+                            android:textColor="@android:color/black"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:layout_marginTop="5dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mtJawab10"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawab!"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kirim"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/anonymous_pro_bold_italic"
+                    android:textSize="16sp"
+                    android:background="@drawable/circle_primary"
+                    android:id="@+id/btKirim"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginBottom="20sp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
+
+</RelativeLayout>

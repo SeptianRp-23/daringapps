@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.Guru.Aktivitas.GuruJawabDetail">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/teal_200"
+        android:id="@+id/top">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btBack"
+            android:src="@drawable/ic_back"
+            android:onClick="back"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jawaban Tugas"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:fontFamily="@font/alegreya_sans_sc_medium"
+            android:layout_marginLeft="50dp"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="id"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:id="@+id/getID"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="id"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:id="@+id/idjwb"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        android:id="@+id/card"
+        android:layout_below="@+id/top"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="normal"
+                android:hint="Nama"
+                android:id="@+id/mt_nama"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:met_floatingLabel="normal"
+                    android:hint="Pelajaran"
+                    android:id="@+id/mt_mapel"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:met_floatingLabel="normal"
+                    android:hint="Kelas"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/mt_kelas"
+                    android:layout_weight="2"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="1. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal1"
+                    android:layout_marginLeft="5dp"
+                    android:hint="Pertanyaan 1"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:inputType="textMultiLine"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab1"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="2. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal2"
+                    android:layout_marginLeft="5dp"
+                    android:hint="Pertanyaan 1"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:inputType="textMultiLine"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab2"
+                android:hint="Jawaban 1"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="3. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal3"
+                    android:hint="Pertanyaan 1"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:inputType="textMultiLine"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab3"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="4. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal4"
+                    android:hint="Pertanyaan 1"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:inputType="textMultiLine"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab4"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="5. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal5"
+                    android:hint="Pertanyaan 1"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:inputType="textMultiLine"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab5"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="6. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal6"
+                    android:hint="Pertanyaan 1"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="5dp"
+                    android:inputType="textMultiLine"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab6"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="7. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/soal7"
+                    android:hint="Pertanyaan 1"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:inputType="textMultiLine"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab7"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="8. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal8"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:hint="Pertanyaan 1"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:inputType="textMultiLine"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab8"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="9. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal9"
+                    android:hint="Pertanyaan 1"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="5dp"
+                    android:inputType="textMultiLine"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab9"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="10. "
+                    android:layout_weight="1"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/soal10"
+                    android:hint="Pertanyaan 1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:inputType="textMultiLine"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawab :"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@android:color/darker_gray"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jawab10"
+                android:hint="Jawaban 1"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@android:color/black"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="normal"
+                android:hint="Beri Nilai"
+                android:id="@+id/etNilai"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:text="Simpan"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/btSubmit"
+                android:background="@drawable/block_blue"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
