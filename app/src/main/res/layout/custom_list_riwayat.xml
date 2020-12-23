@@ -46,32 +46,7 @@
                         android:text="Pelajaran"
                         android:textSize="18sp"
                         android:layout_weight="1"
-                        android:id="@+id/guru_mapel"
-                        android:fontFamily="@font/alegreya_sans_sc_medium"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Kelas            :"
-                        android:textSize="18sp"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/alegreya_sans_sc_medium"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pelajaran"
-                        android:textSize="18sp"
-                        android:layout_weight="1"
-                        android:id="@+id/guru_kelas"
+                        android:id="@+id/list_mapel"
                         android:fontFamily="@font/alegreya_sans_sc_medium"/>
                 </LinearLayout>
 
@@ -94,9 +69,34 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Pelajaran"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_weight="1"
-                        android:id="@+id/guru_tgl"
+                        android:id="@+id/list_tgl"
+                        android:fontFamily="@font/alegreya_sans_sc_medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nilai             :"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/alegreya_sans_sc_medium"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pelajaran"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:id="@+id/list_nilai"
                         android:fontFamily="@font/alegreya_sans_sc_medium"/>
                 </LinearLayout>
 
@@ -104,29 +104,38 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:layout_gravity="center">
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_check"
+                        android:id="@+id/checkStat"
+                        android:visibility="gone"
+                        android:layout_centerInParent="true"/>
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/ic_tugas"
-                    android:layout_centerInParent="true"
-                    android:id="@+id/icon"/>
+                    android:src="@drawable/ic_check_dark"
+                    android:id="@+id/unCheckStat"
+                    android:visibility="gone"
+                    android:layout_centerInParent="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Status"
-                    android:textSize="18sp"
-                    android:layout_below="@+id/icon"
-                    android:id="@+id/status_tugas"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/alegreya_sans_sc_medium"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/list_stat"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
+
 
         </LinearLayout>
 

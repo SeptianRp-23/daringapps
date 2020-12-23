@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,7 @@ public class GuruTambahActivity extends AppCompatActivity {
     Spinner spMapel, spKelas;
     MaterialEditText mt1, mt2, mt3, mt4, mt5, mt6, mt7, mt8, mt9, mt10;
     Button btSimpan;
+    ImageButton btBack;
     String myFormat = "dd MMMM yyyy";
     SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
     private String InsertAPI = Server.URL_API + "insertSoal.php";
@@ -61,6 +64,14 @@ public class GuruTambahActivity extends AppCompatActivity {
         mt9 = findViewById(R.id.p9);
         mt10 = findViewById(R.id.p10);
         btSimpan = findViewById(R.id.btSimpan);
+        btBack = findViewById(R.id.btBack);
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GuruTambahActivity.this, GuruTugasActivity.class));
+            }
+        });
 
         btSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -219,5 +230,10 @@ public class GuruTambahActivity extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(GuruTambahActivity.this);
             requestQueue.add(request);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GuruTambahActivity.this, GuruTugasActivity.class));
     }
 }

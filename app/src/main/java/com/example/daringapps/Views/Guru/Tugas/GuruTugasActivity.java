@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -26,13 +28,16 @@ import com.example.daringapps.Controllers.TugasAdapter;
 import com.example.daringapps.Helper.Server;
 import com.example.daringapps.Helper.SessionManager;
 import com.example.daringapps.R;
+import com.example.daringapps.Views.Guru.DashboardGuruActivity;
 import com.example.daringapps.Views.Murid.Tugas.TugasActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +56,9 @@ public class GuruTugasActivity extends AppCompatActivity {
     private Toast backToast;
     Handler mHandler;
     AlertDialog alertDialog;
+    TextView Tgl;
+    String myFormat = "dd MMMM yyyy";
+    SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +76,7 @@ public class GuruTugasActivity extends AppCompatActivity {
         listData = findViewById(R.id.listGuru);
         guruTugasAdapter = new GuruTugasAdapter(this, itemTugasArrayList);
         listData.setAdapter(guruTugasAdapter);
+        Tgl = findViewById(R.id.tgl);
 
         tambah = findViewById(R.id.add);
         tambah.setOnClickListener(new View.OnClickListener() {
@@ -77,15 +86,27 @@ public class GuruTugasActivity extends AppCompatActivity {
             }
         });
 
+        //Set Tanggal
+        Calendar c1 = Calendar.getInstance();
+        String str1 = sdf.format(c1.getTime());
+        Tgl.setText(str1);
+//        etTanggal.setEnabled(false);
+        //endv
+
         receiveData();
     }
 
     public void receiveData(){
+        final String tanggal = Tgl.getText().toString();
+        final ProgressDialog progressDialog = new ProgressDialog(GuruTugasActivity.this);
+        progressDialog.setMessage("Loading . . .");
+        progressDialog.show();
         StringRequest request = new StringRequest(Request.Method.POST, DataPesananApi,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         itemTugasArrayList.clear();
+                        progressDialog.dismiss();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String sucess = jsonObject.getString("success");
@@ -112,23 +133,27 @@ public class GuruTugasActivity extends AppCompatActivity {
                                     String status = object.getString("status");
 
                                     if (jsonArray.length() == 0) {
+                                        progressDialog.dismiss();
                                         Toast.makeText(GuruTugasActivity.this, "Maaf Sedang Bermasalah!", Toast.LENGTH_SHORT).show();
                                     } else {
                                         itemTugas = new ItemTugas(id, mapel, kelas, tanggal, soal1, soal2, soal3, soal4, soal5, soal6, soal7, soal8, soal9, soal10, status);
                                         itemTugasArrayList.add(itemTugas);
                                         guruTugasAdapter.notifyDataSetChanged();
+                                        progressDialog.dismiss();
                                     }
                                 }
                             }
                         }
                         catch (JSONException e){
                             e.printStackTrace();
+                            progressDialog.dismiss();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         Toast.makeText(GuruTugasActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -137,10 +162,20 @@ public class GuruTugasActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("kelas", getKelas);
+                params.put("tanggal", tanggal );
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
+    }
+
+    public void back(View view) {
+        startActivity(new Intent(GuruTugasActivity.this, DashboardGuruActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GuruTugasActivity.this, DashboardGuruActivity.class));
     }
 }

@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/teal_200"
+        android:background="@color/teal_700"
         android:id="@+id/top">
 
         <ImageButton
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tugas Harian"
+            android:text="Buat Tugas"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             android:fontFamily="@font/alegreya_sans_sc_medium"

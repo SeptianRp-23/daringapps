@@ -30,10 +30,12 @@ public class GuruTugasAdapter extends ArrayAdapter<ItemTugas> {
         TextView txtMapel = view.findViewById(R.id.guru_mapel);
         TextView txtKelas = view.findViewById(R.id.guru_kelas);
         TextView txtTanggal = view.findViewById(R.id.guru_tgl);
+        TextView txtStatus = view.findViewById(R.id.status_tugas);
 
         txtMapel.setText(arrayListItemTugas.get(position).getMapel());
         txtKelas.setText(arrayListItemTugas.get(position).getKelas());
         txtTanggal.setText(arrayListItemTugas.get(position).getTanggal());
+        txtStatus.setText(arrayListItemTugas.get(position).getStatus());
 
         return view;
     }
