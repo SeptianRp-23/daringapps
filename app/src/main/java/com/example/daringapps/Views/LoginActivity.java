@@ -2,6 +2,7 @@ package com.example.daringapps.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -30,12 +31,15 @@ import com.example.daringapps.Helper.SessionManager;
 import com.example.daringapps.R;
 import com.example.daringapps.Views.Guru.DashboardGuruActivity;
 import com.example.daringapps.Views.Murid.DashboardMuridActivity;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
@@ -97,6 +101,29 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        checkPermission();
+    }
+
+    private void checkPermission(){
+
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+//                Toast.makeText(DashboardGuruActivity.this, "Permission granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+//                Toast.makeText(DashboardGuruActivity.this, "Permission not given", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        TedPermission.with(LoginActivity.this)
+                .setPermissionListener(permissionListener)
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.ACCESS_NOTIFICATION_POLICY)
+                .check();
     }
 
     private void loginProces(final String username, final String password) {

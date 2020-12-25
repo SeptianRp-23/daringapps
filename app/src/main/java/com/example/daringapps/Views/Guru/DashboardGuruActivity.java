@@ -2,12 +2,14 @@ package com.example.daringapps.Views.Guru;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -30,6 +32,8 @@ import com.example.daringapps.Views.Guru.Aktivitas.GuruListTugasActivity;
 import com.example.daringapps.Views.Guru.Laporan.GuruLaporanActivity;
 import com.example.daringapps.Views.Guru.Tugas.GuruTugasActivity;
 import com.example.daringapps.Views.LoginActivity;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +42,10 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static com.example.daringapps.Helper.Server.URL_PDF;
 
 public class DashboardGuruActivity extends AppCompatActivity {
 
@@ -58,8 +65,17 @@ public class DashboardGuruActivity extends AppCompatActivity {
     private String UpdatePulang = Server.URL_API + "update_pulang.php";
     private String CheckStatus = Server.URL_API + "getStatus.php";
     private String InsertRekap = Server.URL_API + "insertRekap.php";
+
+    private String createdData1 = URL_PDF + "absenAll.php";
+    private String createdData2 = URL_PDF + "absenSiswa.php";
+    private String createdData3 = URL_PDF + "dataPengguna.php";
+    private String createdData4 = URL_PDF + "dataSiswa.php";
+    private String createdData5 = URL_PDF + "dataTugas.php";
+    private String createdData6 = URL_PDF + "tugasHarian.php";
     LinearLayout btMasuk, btPulang;
     int stat;
+
+//    private static final String[] STORAGE_PERMISSION = (Manifest.permission)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,8 +155,18 @@ public class DashboardGuruActivity extends AppCompatActivity {
         laporan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardGuruActivity.this, GuruLaporanActivity.class));
-                overridePendingTransition(0,0);
+                AbsenAll();
+                final ProgressDialog progressDialog = new ProgressDialog(DashboardGuruActivity.this);
+                progressDialog.setMessage("Tunggu Sebentar . . .");
+                progressDialog.show();
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(DashboardGuruActivity.this, GuruLaporanActivity.class));
+                    }
+                }, 5000);
             }
         });
 
@@ -186,6 +212,154 @@ public class DashboardGuruActivity extends AppCompatActivity {
 //            btPulang.setVisibility(View.VISIBLE);
 //        }
 //    }
+
+    private void AbsenAll(){
+        StringRequest request = new StringRequest(Request.Method.POST, createdData1,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        AbsenSiswa();
+                        DataPengguna();
+                        DataSiswa();
+                        DataTugas();
+                        TugasHarian();
+                        Toast.makeText(DashboardGuruActivity.this, "PDF Ready...", Toast.LENGTH_SHORT).show();
+//                                progressDialog.dismiss();
+//                                startActivity(new Intent(AdmDashboardActivity.this, AdmLaporanActivity.class));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+//                        progressDialog.dismiss();
+                        Toast.makeText(DashboardGuruActivity.this, "Error Connection" + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+                    }
+                }
+        );
+        RequestQueue requestQueue = Volley.newRequestQueue(DashboardGuruActivity.this);
+        requestQueue.add(request);
+    }
+
+
+    private void AbsenSiswa(){
+        String tgl = date.getText().toString();
+        StringRequest request = new StringRequest(Request.Method.POST, createdData2,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        Toast.makeText(AdmDashboardActivity.this, "Laporan 2", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(DashboardGuruActivity.this, "Error Connection" + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params =new HashMap<>();
+                params.put("kelas", getKelas);
+                params.put("tanggal", tgl);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(DashboardGuruActivity.this);
+        requestQueue.add(request);
+    }
+
+    private void DataPengguna(){
+        StringRequest request = new StringRequest(Request.Method.POST, createdData3,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        Toast.makeText(AdmDashboardActivity.this, "Laporan 3", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(DashboardGuruActivity.this, "Error Connection" + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+                    }
+                }
+        );
+        RequestQueue requestQueue = Volley.newRequestQueue(DashboardGuruActivity.this);
+        requestQueue.add(request);
+    }
+
+    private void DataSiswa(){
+        StringRequest request = new StringRequest(Request.Method.POST, createdData4,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        Toast.makeText(AdmDashboardActivity.this, "Laporan 4", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(DashboardGuruActivity.this, "Error Connection" + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+                    }
+                }
+        );
+        RequestQueue requestQueue = Volley.newRequestQueue(DashboardGuruActivity.this);
+        requestQueue.add(request);
+    }
+
+    private void DataTugas(){
+        StringRequest request = new StringRequest(Request.Method.POST, createdData5,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        Toast.makeText(AdmDashboardActivity.this, "Laporan 5", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(DashboardGuruActivity.this, "Error Connection" + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+                    }
+                }
+        );
+        RequestQueue requestQueue = Volley.newRequestQueue(DashboardGuruActivity.this);
+        requestQueue.add(request);
+    }
+
+    private void TugasHarian(){
+        String tgl = date.getText().toString();
+        StringRequest request = new StringRequest(Request.Method.POST, createdData6,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        Toast.makeText(AdmDashboardActivity.this, "Laporan 6", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(DashboardGuruActivity.this, "Error Connection" + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+                    }
+                }
+        )
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params =new HashMap<>();
+                params.put("kelas", getKelas);
+                params.put("tanggal", tgl);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(DashboardGuruActivity.this);
+        requestQueue.add(request);
+    }
 
     private void InsertData() {
         final String textnisn = getNisn;

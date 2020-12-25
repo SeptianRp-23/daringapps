@@ -6,5 +6,6 @@ public class Server {
 
     public static final String URL_API = "https://mydbskripsi.000webhostapp.com/daring-api/"; //public api
     public static final String URL_IMAGE = "https://mydbskripsi.000webhostapp.com";
-    public static final String URL_PDF = "https://mydbskripsi.000webhostapp.com/pdf/";
+//    public static final String URL_PDF = "https://mydbskripsi.000webhostapp.com/pdf/";
+    public static final String URL_PDF = "https://mydbskripsi.000webhostapp.com/daring-pdf/pdf/";
 }
