@@ -43,6 +43,8 @@ public class RiwayatActivity extends AppCompatActivity {
     DataRiwayat dataRiwayat;
     SharedPreferences sharedPreferences;
     SessionManager sessionManager;
+    private long backPressedTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +89,7 @@ public class RiwayatActivity extends AppCompatActivity {
 
 //        Toast.makeText(this, "Kelas :"+getKelas, Toast.LENGTH_SHORT).show();
 
-        listData = findViewById(R.id.list_tugas);
+        listData = findViewById(R.id.listRiwayat);
         riwayatAdapter = new RiwayatAdapter(this, dataRiwayatArrayList);
         listData.setAdapter(riwayatAdapter);
 
@@ -158,5 +160,21 @@ public class RiwayatActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            System.exit(0);
+        } else {
+            backToast = Toast.makeText(this, "Tekan Lagi Untuk Keluar", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 }

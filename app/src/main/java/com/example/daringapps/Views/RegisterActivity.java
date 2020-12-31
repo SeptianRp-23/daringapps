@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     private MaterialEditText etUname, etNama, etKelas;
     private String etLevel = "murid";
     private String RegistAPI = Server.URL_API + "register.php";
+    private Spinner spKelas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +43,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         etUname = findViewById(R.id.reg_username);
         etNama = findViewById(R.id.reg_nama);
-        etKelas = findViewById(R.id.reg_kelas);
         etPass = findViewById(R.id.reg_pass);
         btn_regist = findViewById(R.id.btn_register);
+        spKelas = findViewById(R.id.listkelas);
 
         btn_regist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void InsertData() {
         final String txtUname = etUname.getText().toString().trim();
         final String txtNama = etNama.getText().toString().trim();
-        final String txtKelas = etKelas.getText().toString().trim();
+        final String txtKelas = spKelas.getSelectedItem().toString();
         final String txtLevel = etLevel;
         final String txtPass = etPass.getText().toString().trim();
 

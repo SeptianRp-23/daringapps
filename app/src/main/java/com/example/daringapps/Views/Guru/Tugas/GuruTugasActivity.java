@@ -47,7 +47,7 @@ public class GuruTugasActivity extends AppCompatActivity {
     ListView listData;
     GuruTugasAdapter guruTugasAdapter;
     public static ArrayList<ItemTugas> itemTugasArrayList = new ArrayList<>();
-    private String DataPesananApi = Server.URL_API + "getTugas.php";
+    private String DataPesananApi = Server.URL_API + "getTugasgGuru.php";
     ItemTugas itemTugas;
     SharedPreferences sharedPreferences;
     SessionManager sessionManager;
@@ -97,7 +97,6 @@ public class GuruTugasActivity extends AppCompatActivity {
     }
 
     public void receiveData(){
-        final String tanggal = Tgl.getText().toString();
         final ProgressDialog progressDialog = new ProgressDialog(GuruTugasActivity.this);
         progressDialog.setMessage("Loading . . .");
         progressDialog.show();
@@ -162,7 +161,6 @@ public class GuruTugasActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("kelas", getKelas);
-                params.put("tanggal", tanggal );
                 return params;
             }
         };

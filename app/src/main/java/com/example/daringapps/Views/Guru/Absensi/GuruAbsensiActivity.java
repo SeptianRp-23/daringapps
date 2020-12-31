@@ -151,4 +151,9 @@ public class GuruAbsensiActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GuruAbsensiActivity.this, DashboardGuruActivity.class));
+    }
 }

@@ -111,12 +111,14 @@ public class GuruDetailAbsensi extends AppCompatActivity {
                                     String nama = object.getString("nama");
                                     String kelas = object.getString("kelas");
                                     String tanggal = object.getString("tanggal");
+                                    String jam = object.getString("jam");
+                                    String ket = object.getString("ket");
 
                                     if (jsonArray.length() == 0) {
-                                        Toast.makeText(GuruDetailAbsensi.this, "Maaf Sedang Bermasalah!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(GuruDetailAbsensi.this, "Tidak Ada Data!", Toast.LENGTH_SHORT).show();
                                         progressDialog.dismiss();
                                     } else {
-                                        dataAbsensiDetail = new DataAbsensiDetail(id, nisn, nama, kelas, tanggal);
+                                        dataAbsensiDetail = new DataAbsensiDetail(id, nisn, nama, kelas, tanggal, jam, ket);
                                         dataAbsensiArrayListDtl.add(dataAbsensiDetail);
                                         adapterDetail.notifyDataSetChanged();
                                         progressDialog.dismiss();
@@ -148,5 +150,10 @@ public class GuruDetailAbsensi extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GuruDetailAbsensi.this, GuruAbsensiActivity.class));
     }
 }

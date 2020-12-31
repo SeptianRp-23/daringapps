@@ -32,10 +32,12 @@ public class AdapterDetail extends ArrayAdapter<DataAbsensiDetail> {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_absensi_dtl, null, true);
 
         TextView txtNama = view.findViewById(R.id.absen_nama);
-        TextView txtKelas = view.findViewById(R.id.absen_kelas);
+        TextView txtJam = view.findViewById(R.id.absen_jam);
+        TextView txtKet = view.findViewById(R.id.absen_ket);
 //
         txtNama.setText(arrayListDataAbsensiDtl.get(position).getNama());
-        txtKelas.setText(arrayListDataAbsensiDtl.get(position).getKelas());
+        txtJam.setText(arrayListDataAbsensiDtl.get(position).getJam());
+        txtKet.setText(arrayListDataAbsensiDtl.get(position).getKet());
 
         return view;
     }

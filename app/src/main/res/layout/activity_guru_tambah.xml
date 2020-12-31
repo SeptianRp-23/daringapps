@@ -31,18 +31,6 @@
             android:layout_marginLeft="50dp"
             android:layout_centerVertical="true"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="13 Desember 2020"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:id="@+id/tanggal"
-            android:fontFamily="@font/alegreya_sans_sc_medium"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="10dp"/>
-
     </RelativeLayout>
 
     <androidx.cardview.widget.CardView
@@ -64,36 +52,87 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mata Pelajaran"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/alegreya_sans_sc_medium"/>
-
-            <Spinner
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:id="@+id/listmapel"
-                android:layout_marginTop="5dp"
-                android:entries="@array/mapel"/>
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kelas"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/alegreya_sans_sc_medium"/>
+                android:orientation="horizontal">
 
-            <Spinner
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mata Pelajaran"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/alegreya_sans_sc_medium"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/listmapel"
+                        android:layout_marginTop="5dp"
+                        android:entries="@array/mapel"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1.7">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kelas"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/alegreya_sans_sc_medium"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/listkelas"
+                        android:layout_marginTop="5dp"
+                        android:entries="@array/kelasAll"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:id="@+id/listkelas"
-                android:layout_marginTop="5dp"
-                android:entries="@array/kelas"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:met_floatingLabel="normal"
+                    android:hint="Tanggal"
+                    android:enabled="false"
+                    android:id="@+id/txtDate"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_plan"
+                    android:layout_gravity="bottom"
+                    android:id="@+id/btDate"
+                    android:background="@android:color/transparent"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

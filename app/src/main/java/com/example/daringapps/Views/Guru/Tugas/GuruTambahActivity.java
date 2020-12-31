@@ -3,13 +3,14 @@ package com.example.daringapps.Views.Guru.Tugas;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -25,10 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.daringapps.Helper.Server;
 import com.example.daringapps.R;
-import com.example.daringapps.Views.Murid.Tugas.TugasActivity;
-import com.example.daringapps.Views.Murid.Tugas.TugasDetailActivity;
 import com.rengwuxian.materialedittext.MaterialEditText;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -36,13 +34,14 @@ import java.util.Map;
 
 public class GuruTambahActivity extends AppCompatActivity {
 
-    TextView tanggal;
     Spinner spMapel, spKelas;
-    MaterialEditText mt1, mt2, mt3, mt4, mt5, mt6, mt7, mt8, mt9, mt10;
+    MaterialEditText mt1, mt2, mt3, mt4, mt5, mt6, mt7, mt8, mt9, mt10, date;
     Button btSimpan;
     ImageButton btBack;
     String myFormat = "dd MMMM yyyy";
     SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+    Calendar mCalendar;
+    ImageView btDate;
     private String InsertAPI = Server.URL_API + "insertSoal.php";
 
     @Override
@@ -50,7 +49,6 @@ public class GuruTambahActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guru_tambah);
 
-        tanggal = findViewById(R.id.tanggal);
         spMapel = findViewById(R.id.listmapel);
         spKelas = findViewById(R.id.listkelas);
         mt1 = findViewById(R.id.p1);
@@ -65,6 +63,10 @@ public class GuruTambahActivity extends AppCompatActivity {
         mt10 = findViewById(R.id.p10);
         btSimpan = findViewById(R.id.btSimpan);
         btBack = findViewById(R.id.btBack);
+        btDate = findViewById(R.id.btDate);
+        date = findViewById(R.id.txtDate);
+        mCalendar = Calendar.getInstance();
+
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +87,28 @@ public class GuruTambahActivity extends AppCompatActivity {
                 {
                     InsertData();
                 }
+            }
+        });
+
+        btDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(GuruTambahActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        mCalendar.set(Calendar.YEAR, year);
+                        mCalendar.set(Calendar.MONTH, month);
+                        mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+//                        String formatTanggal = "dd-MM-yyyy";
+//                        SimpleDateFormat sdf = new SimpleDateFormat(formatTanggal);
+                        date.setText(sdf.format(mCalendar.getTime()));
+//                        Calendar c1 = Calendar.getInstance();
+//                        String str1 = sdf.format(c1.getTime());
+//                        mtTgl.setText(str1);
+                    }
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH),
+                        mCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
@@ -115,12 +139,6 @@ public class GuruTambahActivity extends AppCompatActivity {
         // menampilkan alert dialog
         alertDialog.show();
 
-        //Set Tanggal
-        Calendar c1 = Calendar.getInstance();
-        String str1 = sdf.format(c1.getTime());
-        tanggal.setText(str1);
-//        etTanggal.setEnabled(false);
-        //endv
     }
 
 
@@ -152,7 +170,7 @@ public class GuruTambahActivity extends AppCompatActivity {
     private void InsertData() {
         final String textmapel = spMapel.getSelectedItem().toString().trim();
         final String textkelas = spKelas.getSelectedItem().toString().trim();
-        final String texttgl = tanggal.getText().toString().trim();
+        final String texttgl = date.getText().toString().trim();
 
         final String j1 = mt1.getText().toString().trim();
         final String j2 = mt2.getText().toString().trim();

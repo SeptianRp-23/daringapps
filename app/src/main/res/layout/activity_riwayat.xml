@@ -24,7 +24,7 @@
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/list_tugas"
+        android:id="@+id/listRiwayat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/top"

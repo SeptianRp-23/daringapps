@@ -2,17 +2,19 @@ package com.example.daringapps.Views.Guru.Absensi;
 
 public class DataAbsensiDetail {
 
-    public String id, nisn, nama, kelas, tanggal;
+    public String id, nisn, nama, kelas, tanggal, jam, ket;
 
     public DataAbsensiDetail(){
     }
 
-    public DataAbsensiDetail(String id, String nisn, String nama, String kelas, String tanggal) {
+    public DataAbsensiDetail(String id, String nisn, String nama, String kelas, String tanggal, String jam, String ket) {
         this.id = id;
         this.nisn = nisn;
         this.nama = nama;
         this.kelas = kelas;
         this.tanggal = tanggal;
+        this.jam = jam;
+        this.ket = ket;
     }
 
     public String getId() {
@@ -53,5 +55,21 @@ public class DataAbsensiDetail {
 
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
+    }
+
+    public String getJam() {
+        return jam;
+    }
+
+    public void setJam(String jam) {
+        this.jam = jam;
+    }
+
+    public String getKet() {
+        return ket;
+    }
+
+    public void setKet(String ket) {
+        this.ket = ket;
     }
 }

@@ -46,7 +46,7 @@ public class TugasDetailActivity extends AppCompatActivity {
     int position;
     SharedPreferences sharedPreferences;
     SessionManager sessionManager;
-    String myFormat = "EEEE, dd MMMM yyyy";
+    String myFormat = "dd MMMM yyyy";
     SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
     private String jawabAPI = Server.URL_API + "insertJawaban.php";
     Button bt_simpan;

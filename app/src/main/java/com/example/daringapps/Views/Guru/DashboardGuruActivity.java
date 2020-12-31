@@ -121,6 +121,7 @@ public class DashboardGuruActivity extends AppCompatActivity {
             public void onClick(View v) {
                 InsertData();
                 StatusSelesai();
+                Logout();
             }
         });
 

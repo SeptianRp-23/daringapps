@@ -52,7 +52,7 @@ public class DashboardMuridActivity extends AppCompatActivity {
     ImageButton Logout, btUbah, btSimpan;
     private long backPressedTime;
     private Toast backToast;
-    TextView date,time, status, txtUser;
+    TextView date,time, status, txtUser, ket;
     MaterialEditText mtNisn, mtUname, mtNama, mtKelas, mtTelp;
     String myFormat = "dd MMMM yyyy";
     String myDate = "H:m";
@@ -95,6 +95,7 @@ public class DashboardMuridActivity extends AppCompatActivity {
         btSimpan = findViewById(R.id.btsimpan);
         btUbah = findViewById(R.id.bt_ubah);
         time = findViewById(R.id.time);
+        ket = findViewById(R.id.txtKet);
 //        btAbsen = findViewById(R.id.absent);
 
         //Set Tanggal
@@ -217,15 +218,33 @@ public class DashboardMuridActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.tugas:
-                        startActivity(new Intent(getApplicationContext(),
-                                TugasActivity.class));
-                        overridePendingTransition(0,0);
+                        final String txt = ket.getText().toString();
+                        if (txt.equals("Mulai")){
+                            Toast.makeText(DashboardMuridActivity.this, "Kami Belum Absen!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),
+                                    DashboardMuridActivity.class));
+                            overridePendingTransition(0,0);
+                        }
+                        else{
+                            startActivity(new Intent(getApplicationContext(),
+                                    TugasActivity.class));
+                            overridePendingTransition(0,0);
+                        }
                         return true;
 
                     case R.id.riwayat:
-                        startActivity(new Intent(getApplicationContext(),
-                                RiwayatActivity.class));
-                        overridePendingTransition(0,0);
+                        final String txt2 = ket.getText().toString();
+                        if (txt2.equals("Mulai")){
+                            Toast.makeText(DashboardMuridActivity.this, "Kami Belum Absen!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),
+                                    DashboardMuridActivity.class));
+                            overridePendingTransition(0,0);
+                        }
+                        else{
+                            startActivity(new Intent(getApplicationContext(),
+                                    RiwayatActivity.class));
+                            overridePendingTransition(0,0);
+                        }
                         return true;
                 }
                 return false;
@@ -240,6 +259,7 @@ public class DashboardMuridActivity extends AppCompatActivity {
         final String textkelas = getKelas;
         final String texttgl = date.getText().toString();
         final String textTime = time.getText().toString();
+        final String txtKet = ket.getText().toString();
 
 //        final MediaPlayer mp_simpan = MediaPlayer.create(this, R.raw.data_disimpan);
 //        final MediaPlayer mp_gagal = MediaPlayer.create(this, R.raw.data_blm_lengkap);
@@ -286,6 +306,7 @@ public class DashboardMuridActivity extends AppCompatActivity {
                     params.put("kelas", textkelas);
                     params.put("tanggal", texttgl);
                     params.put("jam", textTime);
+                    params.put("ket", txtKet);
                     return params;
                 }
             };
@@ -454,10 +475,12 @@ public class DashboardMuridActivity extends AppCompatActivity {
                                     if (strStatus.equals("Y")){
                                         btMasuk.setVisibility(View.GONE);
                                         btPulang.setVisibility(View.VISIBLE);
+                                        ket.setText("Selesai");
                                     }
                                     else if(strStatus.equals("N")){
                                         btPulang.setVisibility(View.GONE);
                                         btMasuk.setVisibility(View.VISIBLE);
+                                        ket.setText("Mulai");
                                     }
                                 }
                             }

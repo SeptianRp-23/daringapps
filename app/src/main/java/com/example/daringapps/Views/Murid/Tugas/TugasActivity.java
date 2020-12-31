@@ -145,7 +145,7 @@ public class TugasActivity extends AppCompatActivity {
         //Set Tanggal
         Calendar c1 = Calendar.getInstance();
         tgl = sdf.format(c1.getTime());
-        Toast.makeText(this, ""+tgl, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ""+tgl, Toast.LENGTH_SHORT).show();
     }
 
     private final Runnable m_Runnable = new Runnable(){
@@ -237,5 +237,21 @@ public class TugasActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            System.exit(0);
+        } else {
+            backToast = Toast.makeText(this, "Tekan Lagi Untuk Keluar", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 }

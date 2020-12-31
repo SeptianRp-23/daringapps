@@ -36,72 +36,91 @@
             android:layout_marginTop="5dp"
             android:background="@color/purple_200" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/reg_username"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:hint="Username Ex: Amira123"
-            android:inputType="textCapSentences"
-            android:padding="5dp"
-            app:met_floatingLabel="normal" />
+            android:layout_height="match_parent">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/reg_nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:hint="Nama Lengkap"
-            android:inputType="textCapSentences"
-            android:padding="5dp"
-            app:met_floatingLabel="normal" />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/reg_kelas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:backgroundTint="@android:color/white"
-            android:hint="Kelas Ex: 5A"
-            android:inputType="textCapWords"
-            android:padding="5dp"
-            android:textColorHint="@android:color/darker_gray"
-            app:met_floatingLabel="normal" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutpassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:hint="Password"
-            android:layout_marginTop="20dp"
-            app:passwordToggleEnabled="true">
-
-            <EditText
-                android:id="@+id/reg_pass"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/white"
-                android:inputType="textPassword"/>
+                android:orientation="vertical">
 
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/circle_register"
-            android:text="Daftar" />
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/reg_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="Username Ex: Amira123"
+                    android:inputType="textCapSentences"
+                    android:padding="5dp"
+                    app:met_floatingLabel="normal" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/reg_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="Nama Lengkap"
+                    android:inputType="textCapSentences"
+                    android:padding="5dp"
+                    app:met_floatingLabel="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kelas"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/alegreya_sans_sc_medium"
+                    android:layout_marginLeft="35dp" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/listkelas"
+                    android:layout_marginTop="5dp"
+                    android:entries="@array/kelasAll"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="30dp"/>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="Password"
+                    android:layout_marginTop="20dp"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/reg_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:inputType="textPassword"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_register"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_register"
+                    android:text="Daftar" />
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 
