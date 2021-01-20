@@ -81,8 +81,6 @@ public class GuruJawabDetail extends AppCompatActivity {
         jwb9 = findViewById(R.id.jawab9);
         jwb10 = findViewById(R.id.jawab10);
 
-        receiveData();
-
         //set Data
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
@@ -117,6 +115,9 @@ public class GuruJawabDetail extends AppCompatActivity {
             }
         });
 
+//        Toast.makeText(this, ""+tvID.getText().toString(), Toast.LENGTH_SHORT).show();
+
+        receiveData();
     }
 
     public void receiveData(){
@@ -138,6 +139,7 @@ public class GuruJawabDetail extends AppCompatActivity {
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
+                                    String id1 = object.getString("id");
                                     String jawab1 = object.getString("soal1");
                                     String jawab2 = object.getString("soal2");
                                     String jawab3 = object.getString("soal3");

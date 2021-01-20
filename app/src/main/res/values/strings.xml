@@ -23,6 +23,12 @@
         <item>6</item>
     </string-array>
 
+    <string-array name="level">
+        <item>Pilih</item>
+        <item>guru</item>
+        <item>murid</item>
+    </string-array>
+
     <string-array name="kelasAll">
         <item>Pilih</item>
         <item>1A</item>

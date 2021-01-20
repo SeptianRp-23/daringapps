@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Views.Guru.DashboardGuruActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,9 +13,17 @@
         android:padding="10dp"
         android:layout_marginTop="10dp">
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_menu_ex"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:id="@+id/subMenu"/>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="4dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
@@ -25,12 +32,11 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -51,13 +57,6 @@
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/alegreya_sans_sc_medium"/>
 
-                        <ImageButton
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/ic_log"
-                            android:id="@+id/logout"
-                            android:background="@drawable/block_yelow"
-                            android:layout_gravity="center_vertical"/>
 
                     </LinearLayout>
 
@@ -70,7 +69,8 @@
                         android:fontFamily="@font/anonymous_pro_bold_italic"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="20dp"/>
 
                     <LinearLayout
                         android:layout_width="120dp"
@@ -79,7 +79,8 @@
                         android:gravity="center"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/block_blue">
+                        android:background="@drawable/block_blue"
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="30dp"
