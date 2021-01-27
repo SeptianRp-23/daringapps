@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -62,6 +63,9 @@ public class RegisterActivity extends AppCompatActivity {
         final String txtLevel = etLevel;
         final String txtPass = etPass.getText().toString().trim();
 
+        final MediaPlayer mpberhasil = MediaPlayer.create(this, R.raw.daftar_berhasil);
+        final MediaPlayer mpgagal = MediaPlayer.create(this, R.raw.daftar_gagal);
+
         final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
         progressDialog.setMessage("Loading . . .");
 
@@ -77,13 +81,16 @@ public class RegisterActivity extends AppCompatActivity {
                             if (response.equalsIgnoreCase("success")) {
                                 Toast.makeText(RegisterActivity.this, "Berhasil Mendaftar!", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
+                                mpberhasil.start();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             } else if(response.equalsIgnoreCase("duplicated")){
+                                mpgagal.start();
                                 Toast.makeText(RegisterActivity.this, "Username Sudah Terpakai!", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
                             }
                             else {
+                                mpgagal.start();
                                 Toast.makeText(RegisterActivity.this, "Gagal, Terjadi Masalah!", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
                             }
@@ -92,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
+                            mpgagal.start();
                             Toast.makeText(RegisterActivity.this, "Error Connection" + error.getMessage(), Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         }

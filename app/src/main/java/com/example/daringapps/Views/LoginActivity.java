@@ -1,7 +1,6 @@
 package com.example.daringapps.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,15 +9,12 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -33,11 +29,9 @@ import com.example.daringapps.Views.Guru.DashboardGuruActivity;
 import com.example.daringapps.Views.Murid.DashboardMuridActivity;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +55,9 @@ public class LoginActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
         sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+
+        final MediaPlayer mpmulai = MediaPlayer.create(this, R.raw.ucapan);
+        mpmulai.start();
 
         etName = findViewById(R.id.username);
         etPass = findViewById(R.id.password);
@@ -127,7 +124,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginProces(final String username, final String password) {
-//        final MediaPlayer mpmulai = MediaPlayer.create(this, R.raw.berhasil);
+        final MediaPlayer mpberhasil = MediaPlayer.create(this, R.raw.log_berhasil);
+        final MediaPlayer mpgagal = MediaPlayer.create(this, R.raw.log_gagal);
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
         final Handler handler = new Handler();
         progressDialog.setCancelable(false);
@@ -175,11 +173,13 @@ public class LoginActivity extends AppCompatActivity {
                                                 inte.putExtra("kelas", kelas);
                                                 inte.putExtra("nama", nama);
                                                 inte.putExtra("nisn", nisn);
+                                                mpberhasil.start();
                                                 startActivity(inte);
                                                 finish();
                                             }else if (level.equals("guru")){
                                                 sessionManager.createSession(username, nama, kelas, level, nisn);
                                                 editor.apply();
+                                                mpberhasil.start();
                                                 final Intent in = new Intent(LoginActivity.this, DashboardGuruActivity.class);
                                                 in.putExtra("nama", nama);
                                                 in.putExtra("nisn", nisn);
@@ -191,6 +191,7 @@ public class LoginActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                     progressDialog.dismiss();
+                                    mpgagal.start();
                                     Toast.makeText(LoginActivity.this, "Error, Email Or Password", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -199,6 +200,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 progressDialog.dismiss();
+                                mpgagal.start();
                                 Toast.makeText(LoginActivity.this, "Error, Check Connection" +error.toString(), Toast.LENGTH_SHORT).show();
                             }
                         })

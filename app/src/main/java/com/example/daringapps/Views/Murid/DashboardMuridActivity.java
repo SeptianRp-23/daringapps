@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -261,6 +262,9 @@ public class DashboardMuridActivity extends AppCompatActivity {
         final String textTime = time.getText().toString();
         final String txtKet = ket.getText().toString();
 
+        final MediaPlayer mpberhasil = MediaPlayer.create(this, R.raw.berhasil_disimpan);
+        final MediaPlayer mpgagal = MediaPlayer.create(this, R.raw.gagal_disimpan);
+
 //        final MediaPlayer mp_simpan = MediaPlayer.create(this, R.raw.data_disimpan);
 //        final MediaPlayer mp_gagal = MediaPlayer.create(this, R.raw.data_blm_lengkap);
 //        final MediaPlayer mp_error = MediaPlayer.create(this, R.raw.koneksi_error);
@@ -281,10 +285,12 @@ public class DashboardMuridActivity extends AppCompatActivity {
                             if (response.equalsIgnoreCase("success")) {
                                 Toast.makeText(DashboardMuridActivity.this, "Success", Toast.LENGTH_SHORT).show();
 //                                mp_simpan.start();
+                                mpberhasil.start();
                                 progressDialog.dismiss();
                             } else {
                                 Toast.makeText(DashboardMuridActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
 //                                mp_error.start();
+                                mpgagal.start();
                                 progressDialog.dismiss();
                             }
                         }
@@ -528,6 +534,9 @@ public class DashboardMuridActivity extends AppCompatActivity {
         progressDialog.setMessage("Please Wait...");
         progressDialog.show();
 
+        final MediaPlayer mpberhasil = MediaPlayer.create(this, R.raw.berhasil_disimpan);
+        final MediaPlayer mpgagal = MediaPlayer.create(this, R.raw.gagal_disimpan);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, EditAPI,
                 new Response.Listener<String>() {
                     @Override
@@ -540,11 +549,13 @@ public class DashboardMuridActivity extends AppCompatActivity {
 
                             if (success.equals("1")){
                                 Toast.makeText(DashboardMuridActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+                                mpberhasil.start();
                                 Logout();
 //                                sessionManager.createSession(email, name, id);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            mpgagal.start();
                             progressDialog.dismiss();
                             Toast.makeText(DashboardMuridActivity.this, "Error"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
@@ -554,6 +565,7 @@ public class DashboardMuridActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
+                        mpgagal.start();
                         Toast.makeText(DashboardMuridActivity.this, "Error"+error.toString(), Toast.LENGTH_SHORT).show();
 
                     }

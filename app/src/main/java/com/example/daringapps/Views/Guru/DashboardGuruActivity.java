@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -142,6 +143,11 @@ public class DashboardGuruActivity extends AppCompatActivity {
         btUpdate = dialog.findViewById(R.id.btSimpan);
         btClose = dialog.findViewById(R.id.btClose);
 
+        final MediaPlayer mptugas = MediaPlayer.create(this, R.raw.tugas);
+        final MediaPlayer mpaktivitas = MediaPlayer.create(this, R.raw.aktivitas);
+        final MediaPlayer mpabsen = MediaPlayer.create(this, R.raw.absensi);
+        final MediaPlayer mplaporan = MediaPlayer.create(this, R.raw.laporan);
+
         btUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,6 +247,7 @@ public class DashboardGuruActivity extends AppCompatActivity {
         tugas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mptugas.start();
                 startActivity(new Intent(DashboardGuruActivity.this, GuruTugasActivity.class));
                 overridePendingTransition(0,0);
             }
@@ -250,6 +257,7 @@ public class DashboardGuruActivity extends AppCompatActivity {
         absen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mpabsen.start();
                 startActivity(new Intent(DashboardGuruActivity.this, GuruAbsensiActivity.class));
                 overridePendingTransition(0,0);
             }
@@ -259,6 +267,7 @@ public class DashboardGuruActivity extends AppCompatActivity {
         aktivitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mpaktivitas.start();
                 startActivity(new Intent(DashboardGuruActivity.this, GuruListTugasActivity.class));
                 overridePendingTransition(0,0);
             }
@@ -268,6 +277,7 @@ public class DashboardGuruActivity extends AppCompatActivity {
         laporan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mplaporan.start();
                 AbsenAll();
                 final ProgressDialog progressDialog = new ProgressDialog(DashboardGuruActivity.this);
                 progressDialog.setMessage("Tunggu Sebentar . . .");

@@ -131,6 +131,10 @@ public class TugasDetailActivity extends AppCompatActivity {
     }
 
     private void InsertData() {
+
+        final MediaPlayer mpberhasil = MediaPlayer.create(this, R.raw.berhasil_disimpan);
+        final MediaPlayer mpgagal = MediaPlayer.create(this, R.raw.gagal_disimpan);
+
         final String textid = tv_id.getText().toString().trim();
         final String textmapel = tv_mapel.getText().toString().trim();
         final String textsiswa = tv_siswa.getText().toString().trim();
@@ -148,10 +152,6 @@ public class TugasDetailActivity extends AppCompatActivity {
         final String j8 = mt8.getText().toString().trim();
         final String j9 = mt9.getText().toString().trim();
         final String j10 = mt10.getText().toString().trim();
-
-//        final MediaPlayer mp_simpan = MediaPlayer.create(this, R.raw.data_disimpan);
-//        final MediaPlayer mp_gagal = MediaPlayer.create(this, R.raw.data_blm_lengkap);
-//        final MediaPlayer mp_error = MediaPlayer.create(this, R.raw.koneksi_error);
 
         final ProgressDialog progressDialog = new ProgressDialog(TugasDetailActivity.this);
         progressDialog.setMessage("Loading . . .");
@@ -171,10 +171,12 @@ public class TugasDetailActivity extends AppCompatActivity {
 //                                mp_simpan.start();
                                 progressDialog.dismiss();
                                 Intent intent = new Intent(TugasDetailActivity.this, TugasActivity.class);
+                                mpberhasil.start();
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(TugasDetailActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
 //                                mp_error.start();
+                                mpgagal.start();
                                 progressDialog.dismiss();
                             }
                         }
@@ -184,6 +186,7 @@ public class TugasDetailActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(TugasDetailActivity.this, "Error Connection" + error.getMessage(), Toast.LENGTH_SHORT).show();
 //                            mp_error.start();
+                            mpgagal.start();
                             progressDialog.dismiss();
                         }
                     }
